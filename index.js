@@ -6,16 +6,15 @@ const Config = require("../config.json");
 
 
 
-//Webhooks['channelId'] = "/api/webhooks/...
-var Webhooks = Config.TrainerWebhooks;
+//{
+//	"TrainerChannels": {
+//		"511496517056724996": [ "541232877497483267", "/api/webhooks/..."],
+//		"ChannelId": [ "RequiredRoleId", "WebhookPath"]
+//	},
+//	"TrainerToken": "DiscordAuthToken"
+//}
+var ConfigChannels = Config.TrainerChannels;
 var DiscordToken = Config.TrainerToken;
-
-
-var JsonWebhook = {
-	hostname: 'discordapp.com',
-	port: 443,
-	method: 'POST'
-};
 
 
 DiscordClient.on('ready', () => {
@@ -474,14 +473,18 @@ SortMasks();
 console.log(`Processed all patterns!`);
 
 
-
+const RequestBase = {
+	hostname: 'discordapp.com',
+	port: 443,
+	method: 'POST'
+};
 DiscordClient.on('message', (message) => {
 	if(message.content === "" || message.member === null) return;
 	
-	let webhookPath = Webhooks[message.channel.id];
-	if(webhookPath === undefined) return;
+	let channelConfig = ConfigChannels[message.channel.id];
+	if(channelConfig === undefined) return;
 	
-	if(message.member.roles.get('541232877497483267') === undefined) return;
+	if(message.member.roles.get(channelConfig[0]) === undefined) return;
 	
 	let newContent = TrainText(message.content);
 	if(newContent === null) return;
@@ -495,12 +498,12 @@ DiscordClient.on('message', (message) => {
 	};
 	
 	let data = Buffer.from(JSON.stringify(webhookMessage));
-	let requestObject = Object.assign({}, JsonWebhook);
+	let requestObject = Object.assign({}, RequestBase);
 	requestObject.headers = {
 		'Content-Type': 'application/json',
 		'Content-Length': data.length
 	}
-	requestObject.path = webhookPath;
+	requestObject.path = channelConfig[1];
 
 	let post = Https.request(requestObject);
 	post.end(data);
