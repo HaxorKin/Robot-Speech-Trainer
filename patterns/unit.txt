@@ -19,6 +19,7 @@ I need/require - this unit, requires
 I think - this unit, thinks
 I apologize - this unit, apologizes
 I apologise - this unit, apologises
+I agree - this unit, agrees
 Can I have - *, this unit, *
 do I - does, this unit
 

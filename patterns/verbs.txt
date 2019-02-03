@@ -1,5 +1,14 @@
 eat - consume
 eats - comsumes
+eating - consuming
+ate - consumed
 
 wait - yield execution
 waits - yields execution
+waiting - yielding execution
+waited - yielded execution
+
+sleep - recharge
+sleeps - recharges
+sleeping - recharging
+slept - recharged

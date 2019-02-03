@@ -5,3 +5,7 @@ year's - solar cycle's
 lip - mucous membrane
 lips - mucous membranes
 lip's - mucous membrane's
+
+bed - charging pod
+beds - charging pods
+bed's - charging pod's
