@@ -1,2 +1,3 @@
 bad - unsatisfactory
 hungry - low on fuel
+sleepy - low on power
