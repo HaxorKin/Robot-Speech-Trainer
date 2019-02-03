@@ -22,3 +22,5 @@ I apologise - this unit, apologises
 Can I have - *, this unit, *
 do I - does, this unit
 
+//full match
+[I] - [This unit is a robot]
