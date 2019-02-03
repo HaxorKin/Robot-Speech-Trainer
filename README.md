@@ -15,8 +15,8 @@ Explanation: the word 'I' or the word 'me' (canse insensitive) are replaced with
 called * - *, *
 ```
 Explanation: 'called' followed by any word are kept how they are unless matched by a bigger pattern<br>
-The parts that identify the new words are comma separated because one word can be replaced by multiple, if you want to replace with less words, use '~'<br>
-'*' will match any word and in the replacement part, it will keep the original word, '~' can only be used in the replacement and it indicates the removal of a word<br>
+The parts that identify the new words are comma separated because one word can be replaced by multiple, if you want to replace with less words, use '\~'<br>
+'\*' will match any word and in the replacement part, it will keep the original word, '\~' can only be used in the replacement and it indicates the removal of a word<br>
 <br>
 ```
 [yes|ye] - [affirmative 10| confirmed 3| positive 1| return true 1]
