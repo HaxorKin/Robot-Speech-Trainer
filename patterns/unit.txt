@@ -1,4 +1,4 @@
-I/me - this unit
+I/me/myself - this unit
 I am - this unit, is
 I'm/Im - this unit is
 my/mine - this unit's
@@ -19,8 +19,10 @@ I think - this unit, thinks
 I apologize - this unit, apologizes
 I apologise - this unit, apologises
 I agree - this unit, agrees
+I see - this unit, sees
 Can I have - *, this unit, *
 do I - does, this unit
+my bad - this unit's, error
 
 //full match
 [I] - [This unit is a robot]
