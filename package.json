@@ -1,0 +1,14 @@
+{
+  "name": "Robot Speech Trainer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HaxorKin",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}

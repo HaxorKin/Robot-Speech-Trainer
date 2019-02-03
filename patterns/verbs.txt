@@ -1,0 +1,5 @@
+eat - consume
+eats - comsumes
+
+wait - yield execution
+waits - yields execution

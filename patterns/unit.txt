@@ -1,0 +1,24 @@
+I/me - this unit
+I am - this unit, is
+I'm/Im - this unit is
+my/mine - this unit's
+I have - this unit, has
+I've/Ive - this unit has
+I don't/dont - this unit, doesn't
+I'll - this unit will
+
+//maybe
+I get - this unit, gets
+I hope - this unit, hopes
+IDK - this unit doesn't know
+I'd like - this unit would, *
+I mean - this unit, means
+I want - this unit, would like
+I like - this unit, likes
+I need/require - this unit, requires
+I think - this unit, thinks
+I apologize - this unit, apologizes
+I apologise - this unit, apologises
+Can I have - *, this unit, *
+do I - does, this unit
+
