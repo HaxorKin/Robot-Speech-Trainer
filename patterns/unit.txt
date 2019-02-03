@@ -10,7 +10,6 @@ I'll - this unit will
 //maybe
 I get - this unit, gets
 I hope - this unit, hopes
-IDK - this unit doesn't know
 I'd like - this unit would, *
 I mean - this unit, means
 I want - this unit, would like
