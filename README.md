@@ -2,6 +2,7 @@
 
 This small JavaScript program can convert text to look robotic based on rules/patterns<br>
 The important part of it can run in browser too, the repository has a working Discord bot<br>
+Try the demo! https://haxorkin.github.io/Robot-Speech-Trainer<br>
 <br>
 Patterns: (a pattern shouldn't be longer than 9 parts)<br>
 <br>
