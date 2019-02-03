@@ -1,7 +1,7 @@
 # Robot Speech Trainer
 
 This small JavaScript program can convert text to look robotic based on rules/patterns<br>
-The important part of it can run in browser too, the repository has a working discord bot<br>
+The important part of it can run in browser too, the repository has a working Discord bot<br>
 <br>
 Patterns: (a pattern shouldn't be longer than 9 parts)<br>
 <br>
@@ -9,7 +9,6 @@ Patterns: (a pattern shouldn't be longer than 9 parts)<br>
 I/me - this unit
 ```
 Explanation: the word 'I' or the word 'me' (canse insensitive) are replaced with two words 'this unit'<br>
-<br>
 <br>
 ```
 called * - *, *
@@ -21,4 +20,7 @@ The parts that identify the new words are comma separated because one word can b
 ```
 [yes|ye] - [affirmative 10| confirmed 3| positive 1| return true 1]
 ```
-Explanation: Whole input match of 'yes' or 'ye' (case insensitive) are replaced with the following words, with an optional weight for weighted random added.
+Explanation: Whole input match of 'yes' or 'ye' (case insensitive) are replaced with the following words, with an optional weight for weighted random added.<br>
+<br>
+<br>
+Check out my Discord server https://discord.gg/T3umFMZ
