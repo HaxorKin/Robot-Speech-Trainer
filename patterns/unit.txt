@@ -25,6 +25,8 @@ I appreciate - this unit, appreciates
 I welcome - this unit, welcomes
 I agree - this unit, agrees
 I see - this unit, sees
+I serve - this unit, serves
+may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
 am I - is, this unit

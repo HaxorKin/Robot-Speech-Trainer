@@ -133,21 +133,25 @@ function ProcessPatternLine(line) {
 	for(let patternPart of patternParts) {
 		if(patternPart === rootPart) break;
 		mask <<= 1;
-		if(typeof(patternPart) === 'object') mask |= 0b0000000100000000;
+		if(typeof(patternPart) === 'object') {
+			mask |= 0b0000000100000000;
+			matchParts.push(patternPart);
+		}
 		i++;
-		matchParts.push(patternPart);
 	}
 	let bit = 0b0000000010000000;
 	for(; i < patternParts.length; i++) {
 		let patternPart = patternParts[i];
-		if(typeof(patternPart) === 'object') mask |= bit;
+		if(typeof(patternPart) === 'object') {
+			mask |= bit;
+			matchPartsRight.push(patternPart);
+		}
 		bit >>= 1;
-		matchPartsRight.push(patternPart);
 	}
 	matchParts = matchParts.concat(matchPartsRight.reverse());
 	
 	let replacements = line.substring(splitter + 3).trim().split(/\s*,\s*/).map(x => x === '*' ? 1 : x === '~' ? 0 : x);
-	if(replacements.length !== matchParts.length + 1) return false;
+	if(replacements.length !== patternParts.length) return false;
 	if(replacements.length === 1) replacements = replacements[0];
 	else replacements.unshift(rootIndex);
 	
