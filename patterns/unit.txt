@@ -27,6 +27,7 @@ I agree - this unit, agrees
 I see - this unit, sees
 Can I have - *, this unit, *
 do I - does, this unit
+am I - is, this unit
 my bad - this unit's, error
 
 //full match

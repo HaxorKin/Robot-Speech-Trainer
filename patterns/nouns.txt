@@ -9,3 +9,7 @@ lip's - mucous membrane's
 bed - charging pod
 beds - charging pods
 bed's - charging pod's
+
+god - $DEITY
+gods - $DEITIES
+god's - $DEITY's
