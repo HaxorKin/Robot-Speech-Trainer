@@ -4,6 +4,7 @@ I'm/Im - this unit is
 my/mine - this unit's
 I have - this unit, has
 I've/Ive - this unit has
+I do - this unit, does
 I don't/dont - this unit, doesn't
 I'll - this unit will
 

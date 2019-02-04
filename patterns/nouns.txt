@@ -13,3 +13,9 @@ bed's - charging pod's
 god - $DEITY
 gods - $DEITIES
 god's - $DEITY's
+
+morning - booting time
+mornings - booting times
+morning's - booting time's
+
+money - legal tender
