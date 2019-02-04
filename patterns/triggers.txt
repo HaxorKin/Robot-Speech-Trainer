@@ -4,3 +4,7 @@
 [gm|good morning|morning] - [Unit online]
 
 [sorry|soz|sry] - [This unit is sorry]
+
+[IDK|I don't know|I dont know|I dunno|dunno] - [No record found in the database]
+
+[I] - [This unit is a robot]	//should be funny when they test it

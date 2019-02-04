@@ -25,13 +25,13 @@ I apologise - this unit, apologises
 I appreciate - this unit, appreciates
 I welcome - this unit, welcomes
 I agree - this unit, agrees
+I concur - this unit, concurs
 I see - this unit, sees
 I serve - this unit, serves
+I know - this unit, knows
+I say - this unit, says
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
 am I - is, this unit
 my bad - this unit's, error
-
-//full match
-[I] - [This unit is a robot]	//should be funny when they test it
