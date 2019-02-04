@@ -333,7 +333,7 @@ function TrainText(message) {
 									}
 								}
 								if(i < 0) {
-									bit >>= (i * -1); 
+									bit >>= (i * -1);
 									i = 0;
 								}
 								do {
@@ -356,7 +356,7 @@ function TrainText(message) {
 									}
 								}
 								if(i > wordMaxindex) {
-									bit <<= (i - wordMaxindex); 
+									bit <<= (i - wordMaxindex);
 									i = wordMaxindex;
 								}
 								do {
