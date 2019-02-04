@@ -14,10 +14,15 @@ I'd like - this unit would, *
 I mean - this unit, means
 I want - this unit, would like
 I like - this unit, likes
+I love - this unit, emulates affection towards
+I love to - this unit, loves, *
+I understand - this unit, understands
 I need/require - this unit, requires
 I think - this unit, thinks
 I apologize - this unit, apologizes
 I apologise - this unit, apologises
+I appreciate - this unit, appreciates
+I welcome - this unit, welcomes
 I agree - this unit, agrees
 I see - this unit, sees
 Can I have - *, this unit, *

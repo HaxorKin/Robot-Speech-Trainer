@@ -12,3 +12,5 @@ sleep - recharge
 sleeps - recharges
 sleeping - recharging
 slept - recharged
+
+wake up - boot, *

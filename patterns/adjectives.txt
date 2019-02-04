@@ -1,3 +1,6 @@
 bad - unsatisfactory	//might need rethinking
 hungry - low on fuel
 sleepy - low on power
+
+bored - on standby
+bored of - *, *
