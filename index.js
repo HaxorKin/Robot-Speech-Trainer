@@ -74,12 +74,15 @@ const NonemptyLineRegex = /^.+/gm;
 const CommentRegex = /^\s*[(#\/]/;
 const PatternPartsRegex = /\s*(?:(\/)?\s*(\w+(?:'\w+)?)|(\*))/gi;
 const TriggerLineRegex = /^\s*\[/;
-const TriggerRegex = /^\s*\[(.+)\]\s+-\s+\[(.+)\]\s*$/;
+const TriggerRegex = /^\s*\[(.+?)\]\s+-\s+\[(.+?)\]\s*(?:\/\/.*)?$/;
 const TriggerReplaceRegex = /^\s*(.+?)\s*(\d+)?$/;
 function ProcessPatternLine(line) {
 	let splitter = /\s-\s/.exec(line);
 	if(splitter === null) return false;
 	splitter = splitter.index;
+	
+	let commentStart = line.indexOf('//', splitter + 1);
+	if(commentStart !== -1) line = line.substring(0, commentStart);
 	
 	let patternString = line.substring(0, splitter).trim();
 	PatternPartsRegex.lastIndex = 0;
@@ -319,6 +322,16 @@ function TrainText(message) {
 							if(mask & 0xFF00) { //has words before
 								let i = wordIndex - 8;
 								let bit = 0b1000000000000000;
+								if((mask & 0xF000) === 0) {
+									if(mask & 0xC00 === 0) {
+										i += 6;
+										bit >>= 6;
+									}
+									else {
+										i += 4;
+										bit >>= 4;
+									}
+								}
 								if(i < 0) {
 									bit >>= (i * -1); 
 									i = 0;
@@ -332,6 +345,16 @@ function TrainText(message) {
 							if(mask & 0xFF) { //has words after
 								let i = wordIndex + 8;
 								let bit = 0b0000000000000001;
+								if((mask & 0x000F) === 0) {
+									if(mask & 0x30 === 0) {
+										i -= 6;
+										bit <<= 6;
+									}
+									else {
+										i -= 4;
+										bit <<= 4;
+									}
+								}
 								if(i > wordMaxindex) {
 									bit <<= (i - wordMaxindex); 
 									i = wordMaxindex;
