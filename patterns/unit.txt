@@ -11,7 +11,8 @@ I'll - this unit will
 //maybe
 I get - this unit, gets
 I hope - this unit, hopes
-I'd like - this unit would, *
+I'd like/love/rather/be/have/say - this unit would, *
+I'd - it'd
 I mean - this unit, means
 I want - this unit, would like
 I like - this unit, likes
