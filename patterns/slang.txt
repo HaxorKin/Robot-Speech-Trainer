@@ -8,3 +8,6 @@ oh my god - <emitting surprise>, ~, ~
 my god - <emitting surprise>, ~
 oh god - <emitting surprise>, ~
 thank god - <emitting relief>, ~
+
+lol - <expressing amusement>
+lmao - laughter.exe

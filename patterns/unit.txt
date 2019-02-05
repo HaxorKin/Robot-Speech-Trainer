@@ -3,6 +3,7 @@ I am - this unit, is
 I'm/Im - this unit is
 my/mine - this unit's
 I have - this unit, has
+I haven't - this unit, hasn't
 I've/Ive - this unit has
 I do - this unit, does
 I don't/dont - this unit, doesn't
@@ -31,6 +32,7 @@ I see - this unit, sees
 I serve - this unit, serves
 I know - this unit, knows
 I say - this unit, says
+I wish - this unit, wishes
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit

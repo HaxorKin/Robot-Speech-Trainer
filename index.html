@@ -624,7 +624,7 @@ function GlitchText(message) {
 			let wordCount = groupWords.length;
 			for(let wordIndex = 0; wordIndex !== wordCount; wordIndex++) {
 				let glitchType = Math.floor(Math.random() * 16);
-				if(glitchType < 8) {
+				if(glitchType < 3) {
 					glitchGroupLength++;
 				}
 				else
@@ -636,19 +636,19 @@ function GlitchText(message) {
 						messagePointer = newPointer;
 						glitchGroupLength = 0;
 					}
-					if(glitchType < 11) {
+					if(glitchType < 6) {
 						let word = groupWords[wordIndex][0];
 						if(word.length < 2) { glitchGroupLength++; continue; }
 						newMessage += message.substring(messagePointer, groupWords[wordIndex].index);
 						messagePointer = groupWords[wordIndex].index + word.length;
 						switch(glitchType) {
-							case 8:
+							case 3:
 								newMessage += GlitchBefore(word) + word;
 							break;
-							case 9:
+							case 4:
 								newMessage += word + GlitchAfter(word);
 							break;
-							case 10:
+							case 5:
 								newMessage += GlitchBefore(word) + word + GlitchAfter(word);
 							break;
 						}
@@ -664,7 +664,8 @@ function GlitchText(message) {
 
 			if(match === null) {
 				if(Math.random() < 0.1) {
-					newMessage += message.substring(messagePointer) + ' ' + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)];
+					let lastpart = message.substring(messagePointer);
+					newMessage += (/\s/.test(lastpart.substr(-1)) ? lastpart : lastpart + ' ') + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)];
 					messagePointer = message.length;
 				}
 				break;
