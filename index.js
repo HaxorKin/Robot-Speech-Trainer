@@ -27,6 +27,8 @@ DiscordClient.login(DiscordToken);
 
 const MaxComplexity = 1000;
 const MaxWeight = 100;
+const GlitchCommand = "EMP";
+const GlitchTime = 120000;
 
 
 var Patterns = {};
@@ -473,6 +475,110 @@ function TrainText(message) {
 }
 
 
+var ErrorMessages = [];
+
+function ProcessErrorText(errorText) {
+	let lines = errorText.split(/\r?\n/).map(x => x.trim()).filter(x => x !== "");
+	ErrorMessages = ErrorMessages.concat(lines);
+}
+
+function GlitchBefore(word) {
+	let maxIndex = word.length - 1;
+	let s = '';
+	for(let i = Math.floor(Math.random() * 4); i !== -1; i--) {
+    	s += word.substring(0, Math.floor(Math.random() * maxIndex) + 1) + '-';
+	}
+	return s;
+}
+function GlitchAfter(word) {
+	let maxIndex = word.length - 1;
+	let s = '';
+	for(let i = Math.floor(Math.random() * 4); i !== -1; i--) {
+    	s += '-' + word.substring(Math.floor(Math.random() * maxIndex) + 1);
+	}
+	return s;
+}
+
+function GlitchText(message) {
+	ProcessRegex.lastIndex = 0;
+	let groupWords = [];
+	let replacements = [];
+	let newMessage = "";
+	let messagePointer = 0;
+	while(true) {
+		let match = ProcessRegex.exec(message);
+		if(match !== null && match[2] !== undefined) {
+			groupWords.push(match);
+		}
+		else if(groupWords.length === 0) {
+			if(match === null) break;
+			continue;
+		}
+		else {
+			let glitchGroupLength = 0;
+			let wordCount = groupWords.length;
+			for(let wordIndex = 0; wordIndex !== wordCount; wordIndex++) {
+				let glitchType = Math.floor(Math.random() * 16);
+				if(glitchType < 3) {
+					glitchGroupLength++;
+				}
+				else
+				{
+					if(glitchGroupLength !== 0) {
+						if(glitchGroupLength === 1 && Math.random() < 0.5) continue;
+						let newPointer = groupWords[wordIndex - 1].index + groupWords[wordIndex - 1][0].length;
+						newMessage += message.substring(messagePointer, newPointer) + "- " + groupWords.slice(wordIndex - glitchGroupLength, wordIndex).map(x => x[0]).join(' ');
+						messagePointer = newPointer;
+						glitchGroupLength = 0;
+					}
+					if(glitchType < 6) {
+						let word = groupWords[wordIndex][0];
+						if(word.length < 2) { glitchGroupLength++; continue; }
+						newMessage += message.substring(messagePointer, groupWords[wordIndex].index);
+						messagePointer = groupWords[wordIndex].index + word.length;
+						switch(glitchType) {
+							case 3:
+								newMessage += GlitchBefore(word) + word;
+							break;
+							case 4:
+								newMessage += word + GlitchAfter(word);
+							break;
+							case 5:
+								newMessage += GlitchBefore(word) + word + GlitchAfter(word);
+							break;
+						}
+					}						
+				}
+			}
+			if(glitchGroupLength !== 0 && (glitchGroupLength !== 1 || Math.random() < 0.5)) {
+				let newPointer = groupWords[wordCount - 1].index + groupWords[wordCount - 1][0].length;
+				newMessage += message.substring(messagePointer, newPointer) + "- " + groupWords.slice(wordCount - glitchGroupLength, wordCount).map(x => x[0]).join(' ');
+				messagePointer = newPointer;
+			}
+
+
+			if(match === null) {
+				if(Math.random() < 0.1) {
+					let lastpart = message.substring(messagePointer);
+					newMessage += (/\s/.test(lastpart.substr(-1)) ? lastpart : lastpart + ' ') + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)];
+					messagePointer = message.length;
+				}
+				break;
+			}
+			else if(Math.random() < 0.1) {
+				let newPointer = match.index + match[0].length;
+				newMessage += message.substring(messagePointer, newPointer) + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)] + ' ';
+				messagePointer = newPointer;
+			}
+			
+			groupWords = [];
+		}
+	}
+
+	return (newMessage === "") ? null : (newMessage + message.substring(messagePointer));
+}
+
+
 async function FindTextfiles(path, callback) {
 	let contents = await Fs.readdir(path);
 	for(let content of contents) {
@@ -500,6 +606,14 @@ SortMasks();
 console.log(`Processed all patterns!`);
 
 
+let file = await Fs.open('errormessages.txt', 'r');
+let errorText = await file.readFile('utf8');
+file.close();
+ProcessErrorText(errorText);
+
+console.log(`Loaded the error messages!`);
+
+
 const RequestBase = {
 	hostname: 'discordapp.com',
 	port: 443,
@@ -513,8 +627,25 @@ DiscordClient.on('message', (message) => {
 	
 	if(message.member.roles.get(channelConfig[0]) === undefined) return;
 	
-	let newContent = TrainText(message.content);
-	if(newContent === null) return;
+	let newContent;
+	if(channelConfig.glitchy) {
+		let trainedText = TrainText(message.content);
+		newContent = GlitchText(trainedText || message.content);
+		if(newContent === null)	{
+			if(trainedText === null) return;
+			newContent = trainedText;
+		}
+	}
+	else {
+		if(message.content === GlitchCommand) {
+			channelConfig.glitchy = true;
+			setTimeout(() => { channelConfig.glitchy = false }, GlitchTime);
+			return;
+		}
+		
+		newContent = TrainText(message.content);
+		if(newContent === null) return;
+	}
 	
 	message.delete();
 	

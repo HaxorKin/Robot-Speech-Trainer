@@ -70,8 +70,8 @@ lol - <expressing amusement>
 lmao - laughter.exe
 
 
-[yes|ye] - [affirmative 10| confirmed 3| positive 1| return true; 1]
-[no|nah] - [negative]
+[yes|ye] - [Affirmative 10| Confirmed 3| Positive 1| return true; 1]
+[no|nah] - [Negative]
 
 [gm|good morning|morning] - [Unit online]
 
@@ -124,6 +124,8 @@ Can I have - *, this unit, *
 do I - does, this unit
 am I - is, this unit
 my bad - this unit's, error
+I feel - this unit, emulates being
+did I get - *, this unit, *
 
 
 eat - consume
@@ -597,7 +599,21 @@ function TrainText(message) {
 }
 
 
-let ErrorMessages = [ "ERROR!", "ERROR, FILE NOT FOUND!", "ERROR, INVALID SYNTAX!", "ERROR, DATABASE CORRUPTION!", "WARNING, CORTEX FAILURE!", "WARNING, MELTDOWN IMMINENT!" ];
+const ErrorText = `
+ERROR!
+ERROR, FILE NOT FOUND!
+ERROR, INVALID SYNTAX!
+ERROR, DATABASE CORRUPTION!
+WARNING, CORTEX FAILURE!
+WARNING, MELTDOWN IMMINENT!
+`;
+
+var ErrorMessages = [];
+
+function ProcessErrorText(errorText) {
+	let lines = errorText.split(/\r?\n/).map(x => x.trim()).filter(x => x !== "");
+	ErrorMessages = ErrorMessages.concat(lines);
+}
 
 function GlitchBefore(word) {
 	let maxIndex = word.length - 1;
@@ -760,7 +776,7 @@ function SettingsChanged() {
 	TextChanged();
 }
 
-window.onload = () => { ProcessPatternText(PatternText); Postprocess(); SettingsChanged(); };
+window.onload = () => { ProcessPatternText(PatternText); Postprocess(); ProcessErrorText(ErrorText); SettingsChanged(); };
 	</script>
 	<style>
 	*{margin:0}

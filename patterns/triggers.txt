@@ -1,5 +1,5 @@
-[yes|ye] - [affirmative 10| confirmed 3| positive 1| return true; 1]
-[no|nah] - [negative]
+[yes|ye] - [Affirmative 10| Confirmed 3| Positive 1| return true; 1]
+[no|nah] - [Negative]
 
 [gm|good morning|morning] - [Unit online]
 
