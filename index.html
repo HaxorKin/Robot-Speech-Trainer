@@ -756,8 +756,10 @@ function TextChangedGlitchyRobot() {
 	let newSentences = {};
 	for(let sentence of sentences) {
 		let changedSentence = ChangedSentences[sentence];
-		if(changedSentence === undefined)
-			changedSentence = GlitchText(TrainText(sentence) || sentence) || sentence;
+		if(changedSentence === undefined) {
+			changedSentence = TrainText(sentence) || sentence;
+			changedSentence = GlitchText(changedSentence) || changedSentence;
+		}
 		
 		newSentences[sentence] = changedSentence;
 		changedText += changedSentence;
