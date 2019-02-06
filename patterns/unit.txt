@@ -40,3 +40,4 @@ am I - is, this unit
 my bad - this unit's, error
 I feel - this unit, emulates being
 did I get - *, this unit, *
+I guess - this unit, thinks with low certainty
