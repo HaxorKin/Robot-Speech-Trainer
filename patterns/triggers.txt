@@ -10,3 +10,5 @@
 [ty|thank you|thanks] - [This unit thanks you]
 
 [I] - [This unit is a robot]	//should be funny when they test it
+
+[oh] - [Processing unexpected information]

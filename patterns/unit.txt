@@ -33,6 +33,7 @@ I serve - this unit, serves
 I know - this unit, knows
 I say - this unit, says
 I wish - this unit, wishes
+I make - this unit, makes
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
@@ -41,3 +42,4 @@ my bad - this unit's, error
 I feel - this unit, emulates being
 did I get - *, this unit, *
 I guess - this unit, thinks with low certainty
+I wonder - this unit, tries to simulate

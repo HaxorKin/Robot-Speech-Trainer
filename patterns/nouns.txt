@@ -23,3 +23,15 @@ money's - legal tender's
 
 blood - coolant liquid
 blood's - coolant liquid's
+
+food - fuel
+foods - fuels
+food's - fuel's
+
+eye - visual receptor
+eyes - optics
+eye's - visual receptor's
+
+ear - audio receptor
+ears - audio receptors
+ear's - audio receptor's
