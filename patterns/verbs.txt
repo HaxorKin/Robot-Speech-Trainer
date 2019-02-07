@@ -2,6 +2,7 @@ eat - consume
 eats - comsumes
 eating - consuming
 ate - consumed
+eaten - consumed
 
 wait - yield execution
 waits - yields execution
