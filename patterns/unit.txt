@@ -43,3 +43,5 @@ I feel - this unit, emulates being
 did I get - *, this unit, *
 I guess - this unit, thinks with low certainty
 I wonder - this unit, tries to simulate
+should I * - *, this unit, *
+do I * - does, this unit, *
