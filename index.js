@@ -557,13 +557,13 @@ function GlitchText(message) {
 			}
 
 
-			if(match === null) {
+			if(match === null || match[2] === undefined) {
 				if(Math.random() < 0.1) {
 					let lastpart = message.substring(messagePointer);
 					newMessage += (/\s/.test(lastpart.substr(-1)) ? lastpart : lastpart + ' ') + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)];
 					messagePointer = message.length;
 				}
-				break;
+				if(match === null) break;
 			}
 			else if(Math.random() < 0.1) {
 				let newPointer = match.index + match[0].length;
@@ -614,6 +614,7 @@ ProcessErrorText(errorText);
 console.log(`Loaded the error messages!`);
 
 
+function DisableGlitchy(channelConfig) { channelConfig.glitchy = false }
 const RequestBase = {
 	hostname: 'discordapp.com',
 	port: 443,
@@ -625,24 +626,34 @@ DiscordClient.on('message', (message) => {
 	let channelConfig = ConfigChannels[message.channel.id];
 	if(channelConfig === undefined) return;
 	
-	if(message.member.roles.get(channelConfig[0]) === undefined) return;
+	if(message.content === GlitchCommand) {
+		if(message.member.roles.get(channelConfig[0]) === undefined) return;
+		
+		if(channelConfig.glitchy === true) clearTimeout(channelConfig.glitchyTimeout);
+		else channelConfig.glitchy = true;
+		channelConfig.glitchyTimeout = setTimeout(DisableGlitchy, GlitchTime, channelConfig);
+		return;
+	}
 	
 	let newContent;
 	if(channelConfig.glitchy) {
-		let trainedText = TrainText(message.content);
-		newContent = GlitchText(trainedText || message.content);
-		if(newContent === null)	{
-			if(trainedText === null) return;
-			newContent = trainedText;
+		let roles = message.member.roles;
+		if(roles.get(channelConfig[2]) === undefined) {
+			if(roles.get(channelConfig[1]) === undefined) return;
+			newContent = GlitchText(message.content);
+			if(newContent === null) return;
+		}
+		else {
+			let trainedText = TrainText(message.content);
+			newContent = GlitchText(trainedText || message.content);
+			if(newContent === null)	{
+				if(trainedText === null) return;
+				newContent = trainedText;
+			}
 		}
 	}
 	else {
-		if(message.content === GlitchCommand) {
-			channelConfig.glitchy = true;
-			setTimeout(() => { channelConfig.glitchy = false }, GlitchTime);
-			return;
-		}
-		
+		if(message.member.roles.get(channelConfig[2]) === undefined) return;
 		newContent = TrainText(message.content);
 		if(newContent === null) return;
 	}
@@ -661,7 +672,7 @@ DiscordClient.on('message', (message) => {
 		'Content-Type': 'application/json',
 		'Content-Length': data.length
 	}
-	requestObject.path = channelConfig[1];
+	requestObject.path = channelConfig[3];
 
 	let post = Https.request(requestObject);
 	post.end(data);

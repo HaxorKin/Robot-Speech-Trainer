@@ -711,13 +711,13 @@ function GlitchText(message) {
 			}
 
 
-			if(match === null) {
+			if(match === null || match[2] === undefined) {
 				if(Math.random() < 0.1) {
 					let lastpart = message.substring(messagePointer);
 					newMessage += (/\s/.test(lastpart.substr(-1)) ? lastpart : lastpart + ' ') + ErrorMessages[Math.floor(Math.random() * ErrorMessages.length)];
 					messagePointer = message.length;
 				}
-				break;
+				if(match === null) break;
 			}
 			else if(Math.random() < 0.1) {
 				let newPointer = match.index + match[0].length;
