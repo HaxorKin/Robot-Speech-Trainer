@@ -35,6 +35,7 @@ I say - this unit, says
 I wish - this unit, wishes
 I make - this unit, makes
 I use - this unit, uses
+I leave - this unit, leaves
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
