@@ -36,6 +36,7 @@ I wish - this unit, wishes
 I make - this unit, makes
 I use - this unit, uses
 I leave - this unit, leaves
+I realize - this unit, realizes
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
@@ -47,3 +48,4 @@ I guess - this unit, thinks with low certainty
 I wonder - this unit, tries to simulate
 should I * - *, this unit, *
 do I * - does, this unit, *
+I suppose - this unit, presumes
