@@ -37,6 +37,9 @@ I make - this unit, makes
 I use - this unit, uses
 I leave - this unit, leaves
 I realize - this unit, realizes
+I tend - this unit, tends
+I post - this unit, posts
+I go - this unit, goes
 may I * - *, this unit, *
 Can I have - *, this unit, *
 do I - does, this unit
@@ -46,6 +49,9 @@ I feel - this unit, emulates being
 did I get - *, this unit, *
 I guess - this unit, thinks with low certainty
 I wonder - this unit, tries to simulate
-should I * - *, this unit, *
-do I * - does, this unit, *
+I promise - this unit, promises
+should I do/make/say/use - *, this unit, * //todo
+do I do/make/say/use - does, this unit, * //todo
 I suppose - this unit, presumes
+I just/normally/usually don't - this unit, *, doesn't
+I just/normally/usually do - this unit, *, does

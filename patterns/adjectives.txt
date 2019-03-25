@@ -1,4 +1,5 @@
 bad - unsatisfactory	//might need rethinking
+a bad - an, unsatisfactory
 hungry - low on fuel
 sleepy - low on power
 

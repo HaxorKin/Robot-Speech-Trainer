@@ -167,7 +167,7 @@ function ProcessPatternLine(line) {
 				rootwordGroup[0] = replacements;
 			}
 			else {
-				if(rootwordGroup[0] !== undefined) console.warn("Pattern override!");
+				if(rootwordGroup[0] !== undefined) console.warn(`Pattern override! In ${rootword} / ${rootwordGroup[0]}`);
 				else rootwordGroup.m.push(0);
 				rootwordGroup[0] = replacements;
 			}
@@ -194,7 +194,7 @@ function ProcessPatternLine(line) {
 					maskPatterns = {};
 					rootwordGroup[mask] = maskPatterns;
 				}
-				else if(maskPatterns[key] !== undefined) console.warn("Pattern override!");
+				else if(maskPatterns[key] !== undefined) console.warn(`Pattern override! In ${rootword} / ${key}`);
 				
 				maskPatterns[key] = replacements;
 			}

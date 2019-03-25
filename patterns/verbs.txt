@@ -1,5 +1,5 @@
 eat - consume
-eats - comsumes
+eats - consumes
 eating - consuming
 ate - consumed
 eaten - consumed
@@ -15,3 +15,8 @@ sleeping - recharging
 slept - recharged
 
 wake up - boot, *
+
+hate - dislike
+hates - dislikes
+hating - disliking
+hated - disliked
